@@ -1,0 +1,158 @@
+.about-container {
+  padding: 4rem 1rem;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 3rem;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-text {
+  padding: 1rem;
+}
+
+.about-text h3 {
+  color: #007bff;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.about-text p {
+  color: #666;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+/* Skills Section */
+.skills-section {
+  padding: 1rem;
+}
+
+.skills-section h3 {
+  color: #007bff;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.skill-item {
+  margin-bottom: 1.5rem;
+}
+
+.skill-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.skill-name {
+  color: #333;
+  font-weight: 500;
+}
+
+.skill-percentage {
+  color: #007bff;
+}
+
+.skill-bar {
+  height: 8px;
+  background-color: #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.skill-progress {
+  height: 100%;
+  background-color: #007bff;
+  border-radius: 4px;
+  transition: width 1s ease-in-out;
+}
+
+/* Education Section */
+.education-section {
+  padding: 1rem;
+}
+
+.education-section h3 {
+  color: #007bff;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 1.5rem;
+  border-left: 2px solid #007bff;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-item h4 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-item p {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-date {
+  color: #007bff;
+  font-size: 0.9rem;
+}
+
+/* Interests Section */
+.interests-section {
+  padding: 1rem;
+}
+
+.interests-section h3 {
+  color: #007bff;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+.interests-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.interests-list li {
+  background-color: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  text-align: center;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.interests-list li:hover {
+  background-color: #007bff;
+  color: white;
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 768px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .about-text, .skills-section, .education-section, .interests-section {
+    padding: 0;
+  }
+} 
