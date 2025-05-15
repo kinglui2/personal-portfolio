@@ -13,10 +13,13 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   overflow-x: hidden;
+  background-color: var(--color-background);
+  color: var(--color-text-light);
 }
 
 .App {
   min-height: 100vh;
+  background-color: var(--color-background);
 }
 
 main {
@@ -26,67 +29,63 @@ main {
 /* Section styles */
 section {
   position: relative;
-  min-height: fit-content; /* Allow sections to be as tall as needed */
+  min-height: fit-content;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
 }
 
 /* Utility classes */
 .container {
   width: 100%;
+  padding: 0 5%;
+}
+
+.container-narrow {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 5%;
 }
 
 /* Section spacing classes */
 .section-sm {
-  padding: 3rem 0;
   min-height: fit-content;
+  width: 100%;
 }
 
 .section-md {
-  padding: 5rem 0;
   min-height: 100vh;
+  width: 100%;
 }
 
 .section-lg {
-  padding: 7rem 0;
   min-height: 100vh;
+  width: 100%;
 }
 
 /* Scroll padding for anchor links */
 html {
-  scroll-padding-top: 80px; /* Slightly larger than navbar height */
+  scroll-padding-top: 80px;
+  background-color: var(--color-background);
 }
 
 /* Background variations */
 .bg-light {
-  background-color: #f8f9fa;
+  background-color: var(--color-background-light);
 }
 
-.bg-white {
-  background-color: #ffffff;
+.bg-lighter {
+  background-color: var(--color-background-lighter);
 }
 
 /* Responsive container padding */
 @media screen and (max-width: 768px) {
-  .container {
+  .container,
+  .container-narrow {
     padding: 0 1.5rem;
-  }
-
-  .section-sm {
-    padding: 2rem 0;
-  }
-
-  .section-md {
-    padding: 3rem 0;
-  }
-
-  .section-lg {
-    padding: 4rem 0;
   }
 }
 
@@ -95,8 +94,13 @@ button {
 }
 
 a {
-  color: inherit;
+  color: var(--color-primary);
   text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
 }
 
 .logo {
@@ -105,11 +109,13 @@ a {
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+  filter: drop-shadow(0 0 2em var(--color-primary));
 }
+
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  filter: drop-shadow(0 0 2em var(--color-accent));
 }
 
 @keyframes logo-spin {
@@ -129,8 +135,10 @@ a {
 
 .card {
   padding: 2em;
+  background-color: var(--color-background-light);
+  border-radius: 8px;
 }
 
 .read-the-docs {
-  color: #888;
+  color: var(--color-text-light);
 }

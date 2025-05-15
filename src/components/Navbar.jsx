@@ -41,6 +41,12 @@ function Navbar() {
           }}>About</a>
         </li>
         <li>
+          <a href="#skills" onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('skills');
+          }}>Skills</a>
+        </li>
+        <li>
           <a href="#services" onClick={(e) => {
             e.preventDefault();
             scrollToSection('services');

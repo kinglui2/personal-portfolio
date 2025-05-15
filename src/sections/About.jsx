@@ -1,87 +1,166 @@
-import { motion } from 'framer-motion';
+import { motion as Motion } from 'framer-motion';
+import { FaCode, FaLaptopCode, FaUserAstronaut, FaRocket, FaBullseye, 
+         FaGithub, FaLinkedin } from 'react-icons/fa';
 import '../styles/About.css';
 
-const MotionDiv = motion.div;
+const About = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
 
-function About() {
-  const skills = [
-    { name: 'HTML', level: 95 },
-    { name: 'CSS', level: 80 },
-    { name: 'JavaScript', level: 60 },
-    { name: 'Python', level: 65 },
-    { name: 'PHP', level: 60 }
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+      },
+    },
+  };
+
+  const aboutCards = [
+    {
+      icon: <FaUserAstronaut />,
+      title: "Who I Am",
+      content: "A passionate Software Engineer with 2+ years of experience crafting robust web applications",
+      highlights: [
+        "Full-Stack Development Expert",
+        "Problem-Solving Enthusiast",
+        "Clean Code Advocate"
+      ],
+      stats: {
+        "Projects Delivered": "20+",
+        "GitHub Contributions": "500+",
+        "Happy Clients": "15+"
+      }
+    },
+    {
+      icon: <FaLaptopCode />,
+      title: "What I Do",
+      content: "Build scalable web applications with modern technologies",
+      highlights: [
+        "Frontend Development with React",
+        "Backend Systems with Node.js",
+        "Database Design & Optimization"
+      ],
+      stats: {
+        "Code Quality": "95%",
+        "On-time Delivery": "98%",
+        "Test Coverage": "90%"
+      }
+    },
+    {
+      icon: <FaCode />,
+      title: "My Approach",
+      content: "Combine technical excellence with user-centric design",
+      highlights: [
+        "Agile Development",
+        "Test-Driven Development",
+        "Continuous Integration"
+      ],
+      stats: {
+        "Code Reviews": "100+",
+        "Best Practices": "15+",
+        "Team Collaborations": "10+"
+      }
+    },
+    {
+      icon: <FaRocket />,
+      title: "Current Focus",
+      content: "Expanding expertise in modern software architecture",
+      highlights: [
+        "System Design Patterns",
+        "Cloud Architecture",
+        "Performance Optimization"
+      ],
+      stats: {
+        "Learning Hours": "300+",
+        "Certifications": "5+",
+        "Tech Articles": "10+"
+      }
+    },
+    {
+      icon: <FaBullseye />,
+      title: "My Goal",
+      content: "Create impactful solutions while growing as a tech leader",
+      highlights: [
+        "Technical Leadership",
+        "Mentorship",
+        "Innovation"
+      ],
+      stats: {
+        "Team Lead Projects": "5+",
+        "Mentored Devs": "10+",
+        "Innovation Awards": "3+"
+      }
+    }
   ];
 
   return (
-    <div className="about-container container">
-      <MotionDiv
+    <section id="about" className="about-container">
+      <Motion.div
         className="about-content"
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
       >
-        <h2 className="section-title">About Me</h2>
-        
+        <Motion.h2 className="section-title" variants={itemVariants}>
+          About Me
+        </Motion.h2>
+
         <div className="about-grid">
-          <div className="about-text">
-            <h3>Who I Am</h3>
-            <p>
-              I'm a passionate Software Engineer based in Nairobi, Kenya, with a strong foundation in both front-end and back-end development. I love turning complex problems into simple, beautiful, and intuitive solutions.
-            </p>
-            <p>
-              When I'm not coding, you can find me writing technical articles or exploring new technologies to expand my skill set.
-            </p>
-          </div>
-
-          <div className="skills-section">
-            <h3>My Skills</h3>
-            <div className="skills-grid">
-              {skills.map((skill, index) => (
-                <MotionDiv
-                  key={skill.name}
-                  className="skill-item"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: `${skill.level}%` }}
-                  transition={{ duration: 1, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="skill-info">
-                    <span className="skill-name">{skill.name}</span>
-                    <span className="skill-percentage">{skill.level}%</span>
-                  </div>
-                  <div className="skill-bar">
-                    <div className="skill-progress" style={{ width: `${skill.level}%` }}></div>
-                  </div>
-                </MotionDiv>
-              ))}
-            </div>
-          </div>
-
-          <div className="education-section">
-            <h3>Education</h3>
-            <div className="timeline">
-              <div className="timeline-item">
-                <h4>Bachelor's Degree in Computer Science</h4>
-                <p>Kenyatta University</p>
-                <span className="timeline-date">2019 - 2023</span>
+          {aboutCards.map((card, index) => (
+            <Motion.div 
+              className="about-card" 
+              key={index}
+              variants={itemVariants}
+            >
+              <div className="card-header">
+                <span className="card-icon">{card.icon}</span>
+                <h3>{card.title}</h3>
               </div>
-            </div>
-          </div>
+              <p className="card-content">{card.content}</p>
+              
+              <div className="card-highlights">
+                {card.highlights.map((highlight, idx) => (
+                  <div key={idx} className="highlight-item">
+                    <span className="highlight-bullet">•</span>
+                    {highlight}
+                  </div>
+                ))}
+              </div>
 
-          <div className="interests-section">
-            <h3>Interests</h3>
-            <ul className="interests-list">
-              <li>Web Development</li>
-              <li>Technical Writing</li>
-              <li>Problem Solving</li>
-              <li>UI/UX Design</li>
-            </ul>
-          </div>
+              <div className="card-stats">
+                {Object.entries(card.stats).map(([key, value], idx) => (
+                  <div key={idx} className="stat-item">
+                    <span className="stat-value">{value}</span>
+                    <span className="stat-label">{key}</span>
+                  </div>
+                ))}
+              </div>
+            </Motion.div>
+          ))}
         </div>
-      </MotionDiv>
-    </div>
+
+        <Motion.div className="social-proof" variants={itemVariants}>
+          <a href="https://github.com/kinglui2" target="_blank" rel="noopener noreferrer" className="social-link">
+            <FaGithub /> View My Work
+          </a>
+          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
+            <FaLinkedin /> Connect With Me
+          </a>
+        </Motion.div>
+      </Motion.div>
+    </section>
   );
-}
+};
 
 export default About; 
