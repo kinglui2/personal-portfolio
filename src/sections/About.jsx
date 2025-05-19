@@ -1,6 +1,6 @@
 import { motion as Motion } from 'framer-motion';
 import { FaCode, FaLaptopCode, FaUserAstronaut, FaRocket, FaBullseye, 
-         FaGithub, FaLinkedin } from 'react-icons/fa';
+         FaGithub, FaLinkedin, FaHeart } from 'react-icons/fa';
 import '../styles/About.css';
 
 const About = () => {
@@ -36,9 +36,9 @@ const About = () => {
         "Clean Code Advocate"
       ],
       stats: {
-        "Projects Delivered": "20+",
-        "GitHub Contributions": "500+",
-        "Happy Clients": "15+"
+        "Personal Projects": "20+",
+        "Collaborative Repositories": "5+",
+        "Client Projects": "5+"
       }
     },
     {
@@ -51,9 +51,9 @@ const About = () => {
         "Database Design & Optimization"
       ],
       stats: {
-        "Code Quality": "95%",
-        "On-time Delivery": "98%",
-        "Test Coverage": "90%"
+        "Code Quality": "70%",
+        "On-time Delivery": "75%",
+        "Test Coverage": "60%"
       }
     },
     {
@@ -66,7 +66,7 @@ const About = () => {
         "Continuous Integration"
       ],
       stats: {
-        "Code Reviews": "100+",
+        "Code Reviews": "20+",
         "Best Practices": "15+",
         "Team Collaborations": "10+"
       }
@@ -100,65 +100,82 @@ const About = () => {
         "Mentored Devs": "10+",
         "Innovation Awards": "3+"
       }
+    },
+    {
+      icon: <FaHeart />,
+      title: "What I Value",
+      content: "Principles and values that guide my professional journey",
+      highlights: [
+        "Continuous Learning",
+        "Collaborative Growth",
+        "Code Quality"
+      ],
+      stats: {
+        "Core Values": "3+",
+        "Team Success": "100%",
+        "Growth Mindset": "∞"
+      }
     }
   ];
 
   return (
     <section id="about" className="about-container">
-      <Motion.div
-        className="about-content"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        <Motion.h2 className="section-title" variants={itemVariants}>
-          About Me
-        </Motion.h2>
+      <div className="content-wrapper">
+        <Motion.div
+          className="about-content"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+        >
+          <Motion.h2 className="section-title" variants={itemVariants}>
+            About Me
+          </Motion.h2>
 
-        <div className="about-grid">
-          {aboutCards.map((card, index) => (
-            <Motion.div 
-              className="about-card" 
-              key={index}
-              variants={itemVariants}
-            >
-              <div className="card-header">
-                <span className="card-icon">{card.icon}</span>
-                <h3>{card.title}</h3>
-              </div>
-              <p className="card-content">{card.content}</p>
-              
-              <div className="card-highlights">
-                {card.highlights.map((highlight, idx) => (
-                  <div key={idx} className="highlight-item">
-                    <span className="highlight-bullet">•</span>
-                    {highlight}
-                  </div>
-                ))}
-              </div>
+          <div className="about-grid">
+            {aboutCards.map((card, index) => (
+              <Motion.div 
+                className="about-card" 
+                key={index}
+                variants={itemVariants}
+              >
+                <div className="card-header">
+                  <span className="card-icon">{card.icon}</span>
+                  <h3>{card.title}</h3>
+                </div>
+                <p className="card-content">{card.content}</p>
+                
+                <div className="card-highlights">
+                  {card.highlights.map((highlight, idx) => (
+                    <div key={idx} className="highlight-item">
+                      <span className="highlight-bullet">•</span>
+                      {highlight}
+                    </div>
+                  ))}
+                </div>
 
-              <div className="card-stats">
-                {Object.entries(card.stats).map(([key, value], idx) => (
-                  <div key={idx} className="stat-item">
-                    <span className="stat-value">{value}</span>
-                    <span className="stat-label">{key}</span>
-                  </div>
-                ))}
-              </div>
-            </Motion.div>
-          ))}
-        </div>
+                <div className="card-stats">
+                  {Object.entries(card.stats).map(([key, value], idx) => (
+                    <div key={idx} className="stat-item">
+                      <span className="stat-value">{value}</span>
+                      <span className="stat-label">{key}</span>
+                    </div>
+                  ))}
+                </div>
+              </Motion.div>
+            ))}
+          </div>
 
-        <Motion.div className="social-proof" variants={itemVariants}>
-          <a href="https://github.com/kinglui2" target="_blank" rel="noopener noreferrer" className="social-link">
-            <FaGithub /> View My Work
-          </a>
-          <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer" className="social-link">
-            <FaLinkedin /> Connect With Me
-          </a>
+          <Motion.div className="social-proof" variants={itemVariants}>
+            <a href="https://github.com/kinglui2" target="_blank" rel="noopener noreferrer" className="social-link">
+              <FaGithub /> View My Work
+            </a>
+            <a href="https://www.linkedin.com/in/lewis-manyasa-209020298/" target="_blank" rel="noopener noreferrer" className="social-link">
+              <FaLinkedin /> Connect With Me
+            </a>
+          </Motion.div>
         </Motion.div>
-      </Motion.div>
+      </div>
     </section>
   );
 };

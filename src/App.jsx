@@ -3,7 +3,8 @@ import Navbar from './components/Navbar';
 import Home from './sections/Home';
 import About from './sections/About';
 import Skills from './sections/Skills';
-import Services from './sections/Services';
+import Education from './sections/Education';
+import Certifications from './sections/Certifications';
 import Projects from './sections/Projects';
 import Contact from './sections/Contact';
 
@@ -21,8 +22,11 @@ function App() {
         <section id="skills" className="section-md bg-white">
           <Skills />
         </section>
-        <section id="services" className="section-md bg-light">
-          <Services />
+        <section id="education" className="section-md bg-light">
+          <Education />
+        </section>
+        <section id="certifications" className="section-md bg-white">
+          <Certifications />
         </section>
         <section id="projects" className="section-lg bg-white">
           <Projects />

@@ -1,8 +1,26 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import '../styles/Navbar.css';
+import { FaSun, FaMoon } from 'react-icons/fa';
+import { useTheme } from '../context/ThemeContext';
 
-function Navbar() {
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const { isDarkTheme, toggleTheme } = useTheme();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Add scrolled class when page is scrolled more than 50px
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    
+    // Cleanup listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -11,13 +29,20 @@ function Navbar() {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsOpen(false);
+      const offset = 60; // Height of the navbar
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
     }
+    setIsOpen(false);
   };
 
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
       <a href="#home" className="nav-logo" onClick={(e) => {
         e.preventDefault();
         scrollToSection('home');
@@ -47,10 +72,16 @@ function Navbar() {
           }}>Skills</a>
         </li>
         <li>
-          <a href="#services" onClick={(e) => {
+          <a href="#education" onClick={(e) => {
             e.preventDefault();
-            scrollToSection('services');
-          }}>Services</a>
+            scrollToSection('education');
+          }}>Education</a>
+        </li>
+        <li>
+          <a href="#certifications" onClick={(e) => {
+            e.preventDefault();
+            scrollToSection('certifications');
+          }}>Certifications</a>
         </li>
         <li>
           <a href="#projects" onClick={(e) => {
@@ -65,11 +96,16 @@ function Navbar() {
           }}>Contact</a>
         </li>
         <li>
+          <button className="theme-toggle" onClick={toggleTheme} aria-label="Toggle theme">
+            {isDarkTheme ? <FaSun className="theme-icon" /> : <FaMoon className="theme-icon" />}
+          </button>
+        </li>
+        <li>
           <button className="cv-button">Download CV</button>
         </li>
       </ul>
     </nav>
   );
-}
+};
 
 export default Navbar; 

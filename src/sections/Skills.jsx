@@ -73,36 +73,36 @@ const Skills = () => {
     "Frontend Development": {
       icon: <FaLaptopCode />,
       skills: [
-        { name: "React.js", level: 90 },
-        { name: "JavaScript", level: 85 },
+        { name: "React.js", level: 70 },
+        { name: "JavaScript", level: 80 },
         { name: "HTML5/CSS3", level: 90 },
-        { name: "Responsive", level: 85 }
+        { name: "Responsive", level: 80 }
       ]
     },
     "Backend Development": {
       icon: <FaServer />,
       skills: [
-        { name: "Node.js", level: 85 },
-        { name: "Express.js", level: 80 },
-        { name: "REST APIs", level: 85 },
+        { name: "Node.js", level: 65 },
+        { name: "Express.js", level: 65 },
+        { name: "REST APIs", level: 70 },
         { name: "Python", level: 75 }
       ]
     },
     "Database & Tools": {
       icon: <FaDatabase />,
       skills: [
-        { name: "MongoDB", level: 85 },
-        { name: "Git/GitHub", level: 90 },
-        { name: "SQL", level: 75 },
+        { name: "MongoDB", level: 75 },
+        { name: "Git/GitHub", level: 70 },
+        { name: "SQL", level: 80 },
         { name: "DevOps", level: 70 }
       ]
     },
     "Design & Others": {
       icon: <FaPalette />,
       skills: [
-        { name: "UI/UX", level: 80 },
+        { name: "UI/UX", level: 70 },
         { name: "System Design", level: 75 },
-        { name: "Problem Solving", level: 85 },
+        { name: "Problem Solving", level: 80 },
         { name: "Tech Writing", level: 80 }
       ]
     }

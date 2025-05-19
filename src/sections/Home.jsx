@@ -1,8 +1,10 @@
 import { motion } from 'framer-motion';
 import Typed from 'typed.js';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, memo, useMemo } from 'react';
 import '../styles/Home.css';
-import profileImg from '../assets/images/ME.jpeg';
+import profileImgWebp from '../assets/images/ME.webp';
+import profileImgJpeg from '../assets/images/ME.optimized.jpeg';
+import liveBackground from '../assets/images/live.png';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaLaptopCode } from 'react-icons/fa';
 
 const MotionDiv = motion.div;
@@ -12,7 +14,31 @@ const MotionP = motion.p;
 const MotionButton = motion.button;
 const MotionImg = motion.img;
 
-const Home = () => {
+// Memoize animation variants
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut",
+    },
+  },
+};
+
+const Home = memo(() => {
   const typedRef = useRef(null);
   const el = useRef(null);
 
@@ -38,42 +64,14 @@ const Home = () => {
     };
   }, []);
 
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const scrollToProjects = () => {
-    const element = document.getElementById('projects');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
+  const scrollToSection = useMemo(() => ({
+    contact: () => {
+      document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
     },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut",
-      },
-    },
-  };
+    projects: () => {
+      document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+    }
+  }), []);
 
   return (
     <div className="home">
@@ -102,7 +100,7 @@ const Home = () => {
                 boxShadow: "0 5px 15px rgba(0,0,0,0.2)",
               }}
               whileTap={{ scale: 0.95 }}
-              onClick={scrollToProjects}
+              onClick={scrollToSection.projects}
             >
               <FaLaptopCode className="button-icon" /> View My Work
             </MotionButton>
@@ -113,7 +111,7 @@ const Home = () => {
                 boxShadow: "0 5px 15px rgba(0,0,0,0.1)",
               }}
               whileTap={{ scale: 0.95 }}
-              onClick={scrollToContact}
+              onClick={scrollToSection.contact}
             >
               <FaEnvelope className="button-icon" /> Let's Talk
             </MotionButton>
@@ -159,12 +157,16 @@ const Home = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="image-wrapper">
-            <MotionImg 
-              src={profileImg} 
-              alt="Lewis Manyasa"
-              whileHover={{ scale: 1.1 }}
-              transition={{ duration: 0.3 }}
-            />
+            <picture>
+              <source srcSet={profileImgWebp} type="image/webp" />
+              <MotionImg 
+                src={profileImgJpeg}
+                alt="Lewis Manyasa"
+                whileHover={{ scale: 1.1 }}
+                transition={{ duration: 0.3 }}
+                loading="lazy"
+              />
+            </picture>
           </div>
           <MotionDiv
             className="background-shape"
@@ -180,22 +182,9 @@ const Home = () => {
           />
         </MotionDiv>
       </div>
-      <motion.div 
-        className="scroll-indicator"
-        animate={{
-          y: [0, 10, 0],
-        }}
-        transition={{
-          duration: 1.5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <div className="mouse"></div>
-        <span>Scroll Down</span>
-      </motion.div>
     </div>
   );
-};
+});
 
+Home.displayName = 'Home';
 export default Home; 
