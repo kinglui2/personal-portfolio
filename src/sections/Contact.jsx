@@ -25,8 +25,8 @@ const Contact = () => {
       id: 'email',
       icon: <FaEnvelope />,
       title: 'Email',
-      value: 'manyasalewis2@gmail.com',
-      action: 'mailto:manyasalewis2@gmail.com'
+      value: 'manyasalewis21@gmail.com',
+      action: 'mailto:manyasalewis21@gmail.com'
     },
     {
       id: 'linkedin',

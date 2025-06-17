@@ -4,7 +4,6 @@ import { useEffect, useRef, memo, useMemo } from 'react';
 import '../styles/Home.css';
 import profileImgWebp from '../assets/images/ME.webp';
 import profileImgJpeg from '../assets/images/ME.optimized.jpeg';
-import liveBackground from '../assets/images/live.png';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaLaptopCode } from 'react-icons/fa';
 
 const MotionDiv = motion.div;
@@ -130,7 +129,7 @@ const Home = memo(() => {
               <FaGithub />
             </motion.a>
             <motion.a 
-              href="https://linkedin.com/in/yourusername" 
+              href="https://www.linkedin.com/in/lewis-manyasa-209020298/" 
               target="_blank" 
               rel="noopener noreferrer"
               whileHover={{ scale: 1.2, y: -5 }}
