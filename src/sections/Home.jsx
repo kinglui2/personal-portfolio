@@ -2,8 +2,7 @@ import { motion } from 'framer-motion';
 import Typed from 'typed.js';
 import { useEffect, useRef, memo, useMemo } from 'react';
 import '../styles/Home.css';
-import profileImgWebp from '../assets/images/ME.webp';
-import profileImgJpeg from '../assets/images/ME.optimized.jpeg';
+import profileImg from '../assets/images/me.luiz.jpeg';
 import { FaGithub, FaLinkedin, FaTwitter, FaEnvelope, FaLaptopCode } from 'react-icons/fa';
 
 const MotionDiv = motion.div;
@@ -156,16 +155,13 @@ const Home = memo(() => {
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="image-wrapper">
-            <picture>
-              <source srcSet={profileImgWebp} type="image/webp" />
-              <MotionImg 
-                src={profileImgJpeg}
-                alt="Lewis Manyasa"
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.3 }}
-                loading="lazy"
-              />
-            </picture>
+            <MotionImg 
+              src={profileImg}
+              alt="Lewis Manyasa"
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.3 }}
+              loading="lazy"
+            />
           </div>
           <MotionDiv
             className="background-shape"
