@@ -1,4 +1,4 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaPython, FaReact, FaDatabase, 
          FaNetworkWired, FaServer, FaChartLine, 
@@ -11,7 +11,6 @@ const MotionH2 = motion.h2;
 
 const Projects = () => {
   const scrollContainerRef = useRef(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
 
   const projectsData = [
     {
@@ -92,19 +91,15 @@ const Projects = () => {
         if (current.scrollLeft <= 0) {
           // If at the start, scroll to the end
           current.scrollTo({ left: maxScroll, behavior: 'smooth' });
-          setCurrentIndex(projectsData.length - 1);
         } else {
           current.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-          setCurrentIndex(prev => Math.max(0, prev - 1));
         }
       } else {
         if (current.scrollLeft >= maxScroll) {
           // If at the end, scroll to the start
           current.scrollTo({ left: 0, behavior: 'smooth' });
-          setCurrentIndex(0);
         } else {
           current.scrollBy({ left: cardWidth, behavior: 'smooth' });
-          setCurrentIndex(prev => Math.min(projectsData.length - 1, prev + 1));
         }
       }
     }
@@ -114,10 +109,7 @@ const Projects = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (scrollContainerRef.current) {
-        const { current } = scrollContainerRef;
-        const cardWidth = current.offsetWidth / 3;
-        const newIndex = Math.round(current.scrollLeft / cardWidth);
-        setCurrentIndex(newIndex);
+        // Removed unused scroll tracking logic since currentIndex is not used
       }
     };
 
