@@ -101,7 +101,17 @@ const Navbar = () => {
           </button>
         </li>
         <li>
-          <button className="cv-button">Download CV</button>
+          <button 
+            className="cv-button"
+            onClick={() => {
+              const link = document.createElement('a');
+              link.href = '/src/assets/certs/Lewis-Manyasa-Resume.pdf';
+              link.download = 'Lewis-Manyasa-Resume.pdf';
+              link.click();
+            }}
+          >
+            Download CV
+          </button>
         </li>
       </ul>
     </nav>

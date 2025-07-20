@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FaGithub, FaExternalLinkAlt, FaPython, FaReact, FaDatabase, 
+import { FaGithub, FaPython, FaReact, FaDatabase, 
          FaNetworkWired, FaServer, FaChartLine, 
          FaJava, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { SiDjango, SiPostgresql, SiMongodb, SiRedis, SiDocker } from 'react-icons/si';
@@ -26,10 +26,7 @@ const Projects = () => {
         "Historical data analysis",
         "Interactive dashboards"
       ],
-      links: {
-        github: "https://github.com/kinglui2/voip-monitoring-tool.git",
-        live: "https://voip-monitor.demo.com"
-      },
+      github: "https://github.com/kinglui2/voip-monitoring-tool.git",
       icons: {
         primary: <FaNetworkWired />,
         tech: [<FaJava />, <SiDjango />, <SiPostgresql />, <SiRedis />, <SiDocker />]
@@ -48,10 +45,7 @@ const Projects = () => {
         "Audit logging system",
         "RESTful API integration"
       ],
-      links: {
-        github: "https://github.com/kinglui2/company-numbering-plan.git",
-        live: "https://number-plan.demo.com"
-      },
+      github: "https://github.com/kinglui2/company-numbering-plan.git",
       icons: {
         primary: <FaDatabase />,
         tech: [<FaPython />, <SiDjango />, <FaReact />, <SiPostgresql />, <SiDocker />]
@@ -70,10 +64,7 @@ const Projects = () => {
         "Interactive visualization",
         "API integration capabilities"
       ],
-      links: {
-        github: "https://github.com/yourusername/traffic-management",
-        live: "https://traffic-mgmt.demo.com"
-      },
+      github: "https://github.com/kinglui2/Smart-Traffic-Management-System.git",
       icons: {
         primary: <FaChartLine />,
         tech: [<FaPython />, <SiMongodb />, <FaReact />, <SiRedis />, <SiDocker />]
@@ -182,14 +173,16 @@ const Projects = () => {
                   <div className="project-icon">{project.icons.primary}</div>
                   <img src={project.image} alt={project.title} loading="lazy" />
                   <div className="project-overlay">
-                    <div className="project-links">
-                      <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                        <FaGithub />
-                      </a>
-                      <a href={project.links.live} target="_blank" rel="noopener noreferrer">
-                        <FaExternalLinkAlt />
-                      </a>
-                    </div>
+                    <a 
+                      href={project.github} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                      className="project-link"
+                      title="View Source Code"
+                    >
+                      <FaGithub />
+                      <span>View Code</span>
+                    </a>
                   </div>
                 </div>
 
@@ -198,19 +191,16 @@ const Projects = () => {
                   <p className="project-description">{project.description}</p>
                   
                   <div className="project-features">
-                    {project.features.map((feature, index) => (
+                    {project.features.slice(0, 3).map((feature, index) => (
                       <span key={index} className="feature-tag">
                         {feature}
                       </span>
                     ))}
-                  </div>
-
-                  <div className="tech-stack">
-                    {project.icons.tech.map((icon, index) => (
-                      <span key={index} className="tech-icon" title={project.technologies[index]}>
-                        {icon}
+                    {project.features.length > 3 && (
+                      <span className="feature-tag more-features">
+                        +{project.features.length - 3} more
                       </span>
-                    ))}
+                    )}
                   </div>
                 </div>
               </MotionDiv>

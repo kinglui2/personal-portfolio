@@ -4,6 +4,7 @@ import '../styles/Certifications.css';
 import plpSafCert from '../assets/certs/plp-saf.jpg';
 import teltonikaCert from '../assets/certs/teltonika.jpg';
 import threeCxCert from '../assets/certs/3cx cert.jpg';
+import completionCert from '../assets/certs/completion_cert.jpeg';
 
 const MotionDiv = motion.div;
 
@@ -56,6 +57,15 @@ function Certifications() {
       description: "Completed comprehensive training in 3CX phone system deployment, configuration, and maintenance. Gained expertise in VoIP technologies and unified communications.",
       imageJpg: threeCxCert,
       skills: ["VoIP", "Unified Communications", "Network Configuration", "PBX Systems"],
+      verified: true
+    },
+    {
+      title: "Course Completion Certificate",
+      organization: "Safaricom PLP Academy",
+      date: "2025",
+      description: "Successfully completed the comprehensive software engineering curriculum, demonstrating proficiency in modern development practices and technologies.",
+      imageJpg: completionCert,
+      skills: ["Software Development", "Programming", "Problem Solving", "Technical Skills"],
       verified: true
     }
   ];
