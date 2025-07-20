@@ -11,48 +11,6 @@
   background-color: var(--color-background);
 }
 
-.home::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: url('../assets/images/live.png');
-  background-size: 80% auto;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.8;
-  z-index: 0;
-  animation: slowFloat 20s infinite alternate;
-}
-
-@keyframes slowFloat {
-  from {
-    transform: scale(0.95) translateY(-2%);
-  }
-  to {
-    transform: scale(1) translateY(2%);
-  }
-}
-
-/* Overlay for better content visibility */
-.home::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(0, 0, 0, 0.85),
-    rgba(0, 0, 0, 0.7)
-  );
-  z-index: 1;
-  pointer-events: none;
-}
-
 .home-content {
   position: relative;
   z-index: 2;
@@ -335,10 +293,6 @@
   .image-wrapper {
     width: clamp(220px, 60vw, 280px);
     height: clamp(220px, 60vw, 280px);
-  }
-
-  .home::before {
-    background-size: 100% auto;
   }
 }
 

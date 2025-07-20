@@ -46,8 +46,8 @@ const Contact = () => {
       id: 'phone',
       icon: <FaPhone />,
       title: 'Phone',
-      value: '+254 111 632 013',
-      action: 'tel:+254111632013'
+      value: '+254 741 210 843',
+      action: 'tel:+254741210843'
     }
   ];
 
